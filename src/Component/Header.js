@@ -24,6 +24,7 @@ const HeaderWrap = styled.div`
       }    
     @media only screen and (max-width: 500px) {
         grid-template-columns: 1fr 95vw 1fr;
+        overflow:hidden;
     }    
 `;
 
@@ -84,6 +85,7 @@ const CreateSpan = styled.button`
       font-family: 'RecipeKorea';
       @media only screen and (max-width: 500px) {
         font-size:10px;
+        
     }     
 `;
 

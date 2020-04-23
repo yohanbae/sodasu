@@ -29,6 +29,7 @@ const BodyWrap = styled.div`
   font-family: 'RecipeKorea';
   @media only screen and (max-width: 500px) {
     height: 100vh;
+    overflow:hidden;
   }       
 `;
 
@@ -249,7 +250,7 @@ const CloseButton = styled.div`
     height:50px;
     font-size:40px;
     z-index: 999;
-    right:10px; bottom:20px;
+    right:20px; bottom:30px;
     cursor:pointer;
 `;
 
