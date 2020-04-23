@@ -27,6 +27,9 @@ const BodyWrap = styled.div`
     grid-template-columns: 10% 80% 10%;    
   }
   font-family: 'RecipeKorea';
+  @media only screen and (max-width: 500px) {
+    height: 100vh;
+  }       
 `;
 
 const CenterBox = styled.div`

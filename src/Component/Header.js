@@ -31,6 +31,9 @@ const HeaderMiddle = styled.div`
     display:grid;
     grid-template-columns: 30% 70%;
     align-items:center;
+    @media only screen and (max-width: 500px) {
+        grid-template-columns: 100px 1fr;
+    }    
 `;
 
 const LoginWrap = styled.div`
@@ -79,7 +82,9 @@ const CreateSpan = styled.button`
       padding-top:7px;
       cursor:pointer;
       font-family: 'RecipeKorea';
-
+      @media only screen and (max-width: 500px) {
+        font-size:10px;
+    }     
 `;
 
 const Header = ({ShowClick, ShowPersonClick, ParentSearch, ParentSearchEmpty}) => {
