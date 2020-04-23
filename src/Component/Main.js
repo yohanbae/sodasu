@@ -28,10 +28,10 @@ const BodyWrap = styled.div`
   }
   font-family: 'RecipeKorea';
   @media only screen and (max-width: 500px) {
-    height: 100vh;
+    height: 90vh;
     overflow:hidden;
   }
-  background:blue;       
+
 `;
 
 const CenterBox = styled.div`
@@ -41,7 +41,6 @@ const CenterBox = styled.div`
   justify-content:center;
   align-items: center;
   position:relative;
-  background:red;
 `;
 
 const TopTitleText = styled.div`
