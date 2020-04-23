@@ -30,7 +30,8 @@ const BodyWrap = styled.div`
   @media only screen and (max-width: 500px) {
     height: 100vh;
     overflow:hidden;
-  }       
+  }
+  background:blue;       
 `;
 
 const CenterBox = styled.div`
@@ -40,6 +41,7 @@ const CenterBox = styled.div`
   justify-content:center;
   align-items: center;
   position:relative;
+  background:red;
 `;
 
 const TopTitleText = styled.div`
