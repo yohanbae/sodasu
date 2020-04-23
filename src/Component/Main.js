@@ -17,7 +17,7 @@ import '../App.css';
 
 
 const BodyWrap = styled.div`
-  height:calc(90vh);
+  height:calc(100vh - 120px);
   width: 100%;
   display:grid;
   grid-template-columns: 20% 60% 20%;
@@ -35,7 +35,7 @@ const BodyWrap = styled.div`
 `;
 
 const CenterBox = styled.div`
-  height:calc(100vh);
+  height:calc(90vh);
   width:100%;
   display:grid;
   justify-content:center;
