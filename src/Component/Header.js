@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { FaPlus } from "react-icons/fa";
 import useDebounce from "../useDebounceSearch";
 import "../App.css";
+import logo from "../assets/logo.png";
 
 const HeaderWrap = styled.div`
     background: #f2f2f2;
@@ -111,7 +112,7 @@ const Header = ({ShowClick, ShowPersonClick, ParentSearch, ParentSearchEmpty}) =
                 <Link to={'/'}>
                 <span style={{color:"#454545", marginTop:'0px', fontSize:'15px', paddingTop:'8px', fontWeight:'300', fontFamily: 'RecipeKorea', letterSpacing:'10px'
                 }}>
-                    소다수
+                    <img src={logo} width={10} height={10} style={{}} /> 소다수
                 </span>
                 </Link>
                 <LoginWrap>
