@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+.sort-button{
+  background: red;
+}
+
+a{
+  text-decoration: none;
+  color:inherit;
+}
+a:hover{
+  text-decoration: none;
+}
+
+
+@font-face {
+  font-family: 'RecipeKorea';
+  src: url('./assets/Recipekorea.ttf');
+}
