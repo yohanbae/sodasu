@@ -5,6 +5,12 @@ import Create from "./Component/Create";
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-148153392-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
+
+
+
 function App() {
 
   return (
