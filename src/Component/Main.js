@@ -17,7 +17,7 @@ import '../App.css';
 
 
 const BodyWrap = styled.div`
-  height:calc(100% - 120px);
+  height:calc(90vh);
   width: 100%;
   display:grid;
   grid-template-columns: 20% 60% 20%;
