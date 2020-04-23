@@ -240,6 +240,16 @@ const TheAdd = styled.input`
     disabled: true;
     `;
 
+const CloseButton = styled.div`
+    position: fixed;
+    width:50px;
+    height:50px;
+    font-size:40px;
+    z-index: 999;
+    right:10px; bottom:20px;
+    cursor:pointer;
+`;
+
 function Main({history}) {
     const [show, setShow] = useState(false);
     const [showPerson, setShowPerson] = useState(false);
@@ -274,33 +284,6 @@ function Main({history}) {
         }else{
             myData = [
                 // { id: '0', question: '첫번째 꺼에요', answer_one:"정답1", answer_two:"정답2~", answer_one_count:1, answer_two_count:0},
-                // { id: '2', question: '두번째 문제 이름', answer_one:"정답1", answer_two:"정답2~", answer_one_count:0, answer_two_count:1},
-                // { id: '3', question: '세번째꺼에유', answer_one:"정답1", answer_two:"정답2~", answer_one_count:0, answer_two_count:1},
-                // { id: '4', question: '4444444444444', answer_one:"정답1", answer_two:"정답2~", answer_one_count:1, answer_two_count:0},
-                // { id: '5', question: '5555 문제 이555', answer_one:"정답1", answer_two:"정답2~", answer_one_count:0, answer_two_count:1},
-                // { id: '6', question: '세66666번째꺼에유', answer_one:"정답1", answer_two:"정답2~", answer_one_count:0, answer_two_count:1},
-                // { id: '7', question: '첫777777번째 꺼에요', answer_one:"정답1", answer_two:"정답2~", answer_one_count:1, answer_two_count:0},
-                // { id: '8', question: '88888두번째 문제 이름', answer_one:"정답1", answer_two:"정답2~", answer_one_count:0, answer_two_count:1},
-                // { id: '9', question: '99999세번째꺼에유', answer_one:"정답1", answer_two:"정답2~", answer_one_count:0, answer_two_count:1},
-                // { id: '10', question: '10첫번째 꺼에요', answer_one:"정답1", answer_two:"정답2~", answer_one_count:1, answer_two_count:0},
-                // { id: '11', question: '11두번째 문제 이름', answer_one:"정답1", answer_two:"정답2~", answer_one_count:0, answer_two_count:1},
-                // { id: '12', question: '12세번째꺼에유', answer_one:"정답1", answer_two:"정답2~", answer_one_count:0, answer_two_count:1},
-                // { id: '13', question: '13첫번째 꺼에요', answer_one:"정답1", answer_two:"정답2~", answer_one_count:1, answer_two_count:0},
-                // { id: '14', question: '14두번째 문제 이름', answer_one:"정답1", answer_two:"정답2~", answer_one_count:0, answer_two_count:1},
-                // { id: '15', question: '15세번째꺼에유', answer_one:"정답1", answer_two:"정답2~", answer_one_count:0, answer_two_count:1},
-                // { id: '16', question: '16첫번째 꺼에요', answer_one:"정답1", answer_two:"정답2~", answer_one_count:1, answer_two_count:0},
-                // { id: '17', question: '17두번째 문제 이름', answer_one:"정답1", answer_two:"정답2~", answer_one_count:0, answer_two_count:1},
-                // { id: '18', question: '18세번째꺼에유', answer_one:"정답1", answer_two:"정답2~", answer_one_count:0, answer_two_count:1},
-                // { id: '19', question: '19첫번째 꺼에요', answer_one:"정답1", answer_two:"정답2~", answer_one_count:1, answer_two_count:0},
-                // { id: '20', question: '20두번째 문제 이름', answer_one:"정답1", answer_two:"정답2~", answer_one_count:0, answer_two_count:1},
-                // { id: '21', question: '21세번째꺼에유', answer_one:"정답1", answer_two:"정답2~", answer_one_count:0, answer_two_count:1},
-                // { id: '22', question: '22첫번째 꺼에요', answer_one:"정답1", answer_two:"정답2~", answer_one_count:1, answer_two_count:0},
-                // { id: '23', question: '23두번째 문제 이름', answer_one:"정답1", answer_two:"정답2~", answer_one_count:0, answer_two_count:1},
-                // { id: '24', question: '24세번째꺼에유', answer_one:"정답1", answer_two:"정답2~", answer_one_count:0, answer_two_count:1},
-                // { id: '25', question: '25첫번째 꺼에요', answer_one:"정답1", answer_two:"정답2~", answer_one_count:1, answer_two_count:0},
-                // { id: '26', question: '26두번째 문제 이름', answer_one:"정답1", answer_two:"정답2~", answer_one_count:0, answer_two_count:1},
-                // { id: '27', question: '27세번째꺼에유', answer_one:"정답1", answer_two:"정답2~", answer_one_count:0, answer_two_count:1},
-
             ];
             localStorage.setItem('sosudasu', JSON.stringify(myData))
         }
@@ -415,7 +398,7 @@ function Main({history}) {
         console.log(newRow);
         setTimeout(() => {
             if(nextLink !== "nono"){
-                // history.push(`/main/${nextLink}`);
+                history.push(`/main/${nextLink}`);
             }
         }, 500);
 
@@ -511,8 +494,8 @@ function Main({history}) {
         document.execCommand("copy");
         // alert("현재 페이지 주소를 복사했습니다");
         toast.info(`공유 주소가 복사되었습니다`, {hideProgressBar: true});
-
     }
+
 
 
     return (
@@ -587,11 +570,22 @@ function Main({history}) {
   
         {/* Hidden Window */}
         {
-          show ? <HiddenWindow><ListComponent ref={childRef} onClose={handleClose} /></HiddenWindow> : null
+          show ? 
+            <>
+                <HiddenWindow><ListComponent ref={childRef} onClose={handleClose} /></HiddenWindow> 
+                <CloseButton onClick={()=>onShowClose()}>X</CloseButton>
+            </>
+            : null
         }      
         {
-          showPerson ? <HiddenPerson><Person /></HiddenPerson> : null
+          showPerson ? 
+          <>
+            <HiddenPerson><Person /></HiddenPerson>
+            <CloseButton onClick={()=>onShowClose()}>X</CloseButton>
+            </> 
+            : null
         }
+
 
         <Footer />
       </>

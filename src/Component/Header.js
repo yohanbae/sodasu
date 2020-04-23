@@ -12,7 +12,7 @@ const HeaderWrap = styled.div`
     grid-template-columns: 20% 60% 20%;
     position: absolute;
     left:0; top:0;
-    width:100%;
+    width:100vw;
     height:40px;
     align-items:center;
 

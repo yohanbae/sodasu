@@ -5,7 +5,7 @@ const TheFooter = styled.div`
   background: #f2f2f2;
   width: 100%;
   height:35px;
-  position:absolute;
+  position:fixed;
   left:0; bottom:0;
 `;
 
