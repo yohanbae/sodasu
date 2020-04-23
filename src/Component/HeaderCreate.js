@@ -9,7 +9,7 @@ const HeaderWrap = styled.div`
     background: #f2f2f2;
     font-size:12px;
     display:grid;
-    grid-template-columns: 20% 60% 20%;
+    grid-template-columns: 1fr 60% 1fr;
     position: absolute;
     left:0; top:0;
     width:100%;
@@ -20,9 +20,10 @@ const HeaderWrap = styled.div`
     z-index:99;
 
     @media only screen and (max-width: 768px) {
-        grid-template-columns: 10% 80% 10%;
-      }    
-
+    }    
+    @media only screen and (max-width: 500px) {
+        grid-template-columns: 1fr 90vw 1fr;
+    }
 `;
 
 const HeaderMiddle = styled.div`

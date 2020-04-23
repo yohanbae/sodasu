@@ -86,6 +86,9 @@ const QuestionP = styled.p`
     padding:0; margin:0;
     font-size:12px;
     color: ${props => props.active ? `red` : `blue` };
+    @media only screen and (max-width: 500px) {
+        font-size:10px;
+    }     
 `;
 const QuestionP2 = styled(QuestionP)`
     padding:0; margin:0;

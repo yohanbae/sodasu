@@ -22,7 +22,9 @@ const HeaderWrap = styled.div`
     @media only screen and (max-width: 768px) {
         grid-template-columns: 10% 80% 10%;
       }    
-
+    @media only screen and (max-width: 500px) {
+        grid-template-columns: 1fr 95vw 1fr;
+    }    
 `;
 
 const HeaderMiddle = styled.div`
@@ -38,6 +40,10 @@ const LoginWrap = styled.div`
     grid-template-columns: 1fr 100px 100px;
     align-items:center;
     grid-gap:10px;
+    @media only screen and (max-width: 500px) {
+        grid-template-columns: 100px 100px 100px;
+    }    
+    
 `;
 const SearchBar = styled.input`
     border-radius:3px;
@@ -56,6 +62,10 @@ const SearchBar = styled.input`
     &:hover::placeholder{
         color:black;
     }
+
+    @media only screen and (max-width: 500px) {
+        font-size:10px;
+    }     
 `;
 
 const CreateSpan = styled.button`

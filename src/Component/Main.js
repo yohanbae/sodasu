@@ -87,7 +87,6 @@ const SkipButtonWrap = styled.div`
   margin-top:20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width:100%;
 `
   
 const SkipButton = styled.button`
@@ -164,6 +163,10 @@ const HiddenPerson = styled(HiddenWindow)`
     background:#fafafa;
     width:60%;
     height:400px;
+    @media only screen and (max-width: 500px) {
+        width:90%;
+        left:5%;
+    }     
 `
 
 const DisplayPercent = styled.div`

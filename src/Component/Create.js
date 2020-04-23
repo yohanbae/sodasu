@@ -18,6 +18,11 @@ const Box = styled.div`
     border-radius: 5px;
     padding:50px 20px;
     margin-top:30px;
+    @media only screen and (max-width: 768px) {
+    }
+    @media only screen and (max-width: 500px) {
+        width:90vw;
+    }    
 `;
 
 const Input = styled.input`
@@ -26,6 +31,9 @@ const Input = styled.input`
     font-size:14px;
     font-family: 'RecipeKorea';
     padding-top:5px;
+    @media only screen and (max-width: 500px) {
+        font-size:10px;
+    }  
 `;
 
 const InputQuestion = styled.textarea`
