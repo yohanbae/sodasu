@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import "../App.css";
+import logo from "../assets/logo.png";
 
 const TheFooter = styled.div`
   background: #f2f2f2;
@@ -15,10 +16,38 @@ const TheFooter = styled.div`
   justify-content: center;
 `;
 
+const TheWrap = styled.div`
+  display:none;
+  @media only screen and (max-width: 500px) {
+    display:block;
+  }     
+`;
+
+const TheTitle = styled.span`  
+`;
+const LogoImg = styled.img`
+    width: 10px; height:10px;
+`;
+
+const FooterContact = styled.span`
+
+display:block;
+@media only screen and (max-width: 500px) {
+  display:none;
+}     
+`;
+
 const Footer = () => {
     return (
       <>
-      <TheFooter><a href="mailto:hanison.dev@gmail.com?subject=ToHanison">CONTACT HANISON</a></TheFooter>
+      <TheFooter>
+        <a href="mailto:hanison.dev@gmail.com?subject=ToHanison">
+        <FooterContact>CONTACT HANISON</FooterContact>
+        <TheWrap>
+          <LogoImg src={logo}/> <TheTitle style={{color:"#454545", marginTop:'0px', fontSize:'12px', paddingTop:'5px', fontWeight:'100', fontFamily: 'RecipeKorea', letterSpacing:'5px'}}>소다수</TheTitle>
+        </TheWrap>
+        </a>
+      </TheFooter>
       </>
     );
 }

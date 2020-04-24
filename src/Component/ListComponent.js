@@ -117,14 +117,17 @@ const ListLi = styled.div`
 `;
 const ListQ = styled.span`
     font-size:20px;
-    margin-top: -5px;
+    height:100%;
+    display:grid;
+    align-items: center;
+    margin-top:-5px;
 `;
 
 const ListTitle = styled.div`
     display:grid;
     align-items:center;
     font-family: 'RecipeKorea';
-    padding-top:5px;
+    font-family: 'NanumBarunGothic';
 `;
 
 const Point = styled.div`

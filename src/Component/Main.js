@@ -49,6 +49,8 @@ const TopTitleText = styled.div`
   left:0; top:50px;
   color: rgba(69, 69, 69, 0.8);
   font-size: 13px;
+  font-family: 'RecipeKorea';
+  font-family: 'NanumBarunGothic';
 `;
 
 const QuestionPosition = styled.div`
@@ -552,7 +554,7 @@ function Main({history}) {
             <QuestionPosition>
               <QuestionWrap>
                 <QuestionTitle>
-                    {theData.question}
+                    Q. {theData.question}
                 </QuestionTitle>
                 <QuestionButtonWrap>
                   <ButtonLeft onClick={()=>handleButton(1)}>{theData.answer_one}</ButtonLeft>

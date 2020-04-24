@@ -29,7 +29,7 @@ const Wrap2 = styled.div`
     height:100px;
     text-align:left;
     display:grid;
-    align-items:left;
+    align-items:flex-end;
     @media only screen and (max-width: 500px) {
         text-align: center;
     }     
@@ -108,6 +108,7 @@ const H4 = styled.h4`
     color:#1a1a1a;
     margin-bottom:5px;
     font-family: 'RecipeKorea';
+    font-family: 'NanumBarunGothic';
     `;
 
 const H6 = styled.h6`
@@ -117,6 +118,7 @@ const H6 = styled.h6`
     color:#1a1a1a;
     margin-bottom:5px;
     font-family: 'RecipeKorea';
+    font-family: 'NanumBarunGothic';
 `;
 
 const LoadingWrap = styled.div`

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import ReactTooltip from "react-tooltip";
-
+import "../App.css";
 
 const OldWrap = styled.div`
     width:100%; height:calc(80vh - 100px);
@@ -17,6 +17,7 @@ const H5 = styled.p`
     display:grid;
     align-items:center;
     font-family: 'RecipeKorea';
+    font-family: 'NanumBarunGothic';
 `;
 
 const ListWrap = styled.div`
@@ -63,8 +64,10 @@ width:calc(100% - 20px);
 `;
 const ListQ = styled.span`
     font-size:20px;
+    height:100%;
     display:grid;
     align-items:center;
+    font-family: 'NanumBarunGothic';
 `;
 
 const ListTitle = styled.div`
@@ -72,6 +75,7 @@ const ListTitle = styled.div`
     align-items:center;
     font-family: 'RecipeKorea';
     font-weight:100;
+    font-family: 'NanumBarunGothic';
 `;
 
 const Point = styled.div`
@@ -87,6 +91,7 @@ const DataWrap = styled.div`
 const QuestionP = styled.p`
     padding:0; margin:0;
     font-size:12px;
+    font-family: 'NanumBarunGothic';
     color: ${props => props.active ? `red` : `blue` };
     @media only screen and (max-width: 500px) {
         font-size:10px;

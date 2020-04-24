@@ -88,7 +88,7 @@ const Create = ({history}) => {
             return;
         }
 
-        let newId = '_' + Math.random().toString(36).substr(2, 9) + Math.random().toString(36).substr(2, 9) + Math.random().toString(36).substr(2, 9);
+        let newId = '_' + Math.random().toString(36).substr(2, 9);
         let newData = { id: newId, question: question.value, answer_one: answer_one.value, answer_two: answer_two.value, answer_one_count:0, answer_two_count:0}
 
         db.collection("question").doc("6QpyEuoFlECaqPcX2teg").update({

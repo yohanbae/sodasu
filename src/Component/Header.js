@@ -34,8 +34,9 @@ const HeaderMiddle = styled.div`
     display:grid;
     grid-template-columns: 30% 70%;
     align-items:center;
+    height:100%;
     @media only screen and (max-width: 500px) {
-        grid-template-columns: 100px 1fr;
+        grid-template-columns: 25px 1fr;
     }    
 `;
 
@@ -48,7 +49,7 @@ const LoginWrap = styled.div`
     justify-content: flex-end;
     grid-gap:10px;
     @media only screen and (max-width: 500px) {
-        grid-template-columns: 100px 100px 100px;
+        grid-template-columns: 1fr 100px 100px;
     }    
 `;
 const SearchBar = styled.input`
@@ -91,6 +92,18 @@ const CreateSpan = styled.button`
 
 `;
 
+const TheTitle = styled.span`
+    @media only screen and (max-width: 500px) {
+        display:none;
+    }     
+`;
+const LogoImg = styled.img`
+    width: 10px; height:10px;
+    @media only screen and (max-width: 500px) {
+        width: 15px; height:15px;
+    }     
+`;
+
 const Header = ({ShowClick, ShowPersonClick, ParentSearch, ParentSearchEmpty}) => {
     const [search, setSearch] = useState("");
     const debouncedSearchTerm = useDebounce(search, 500);
@@ -111,10 +124,9 @@ const Header = ({ShowClick, ShowPersonClick, ParentSearch, ParentSearchEmpty}) =
             <HeaderMiddle>
                 {/* <FaUser style={{color:"#454545", marginTop:'3px', fontSize:'14px'}} onClick={ShowPersonClick} /> */}
                 <Link to={'/'}>
-                <span style={{color:"#454545", marginTop:'0px', fontSize:'15px', paddingTop:'10px', fontWeight:'300', fontFamily: 'RecipeKorea', letterSpacing:'5px'
-                }}>
-                    <img src={logo} width={10} height={10} style={{}} /> 소다수
-                </span>
+                <>
+                    <LogoImg src={logo}/> <TheTitle style={{color:"#454545", marginTop:'0px', fontSize:'15px', paddingTop:'10px', fontWeight:'300', fontFamily: 'RecipeKorea', letterSpacing:'5px'}}>소다수</TheTitle>
+                </>
                 </Link>
                 <LoginWrap>
                     <SearchBar placeholder="더 보기 및 검색" onClick={ShowClick} value={search} onChange={e => setSearch(e.target.value)} />
