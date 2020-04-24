@@ -10,7 +10,7 @@ const HeaderWrap = styled.div`
     background: #f2f2f2;
     font-size:12px;
     display:grid;
-    grid-template-columns: 20% 60% 20%;
+    grid-template-columns: 1fr 60vw 1fr;
     position: absolute;
     left:0; top:0;
     width:100vw;
@@ -21,12 +21,13 @@ const HeaderWrap = styled.div`
     z-index:99;
 
     @media only screen and (max-width: 768px) {
-        grid-template-columns: 10% 80% 10%;
+        grid-template-columns: 1fr 80% 1fr;
       }    
     @media only screen and (max-width: 500px) {
-        grid-template-columns: 1fr 95vw 1fr;
+        grid-template-columns: 1fr 90vw 1fr;
         overflow:hidden;
     }    
+
 `;
 
 const HeaderMiddle = styled.div`
@@ -44,11 +45,11 @@ const LoginWrap = styled.div`
     display:grid;
     grid-template-columns: 1fr 100px 100px;
     align-items:center;
+    justify-content: flex-end;
     grid-gap:10px;
     @media only screen and (max-width: 500px) {
         grid-template-columns: 100px 100px 100px;
     }    
-    
 `;
 const SearchBar = styled.input`
     border-radius:3px;
@@ -86,8 +87,8 @@ const CreateSpan = styled.button`
       font-family: 'RecipeKorea';
       @media only screen and (max-width: 500px) {
         font-size:10px;
-        
     }     
+
 `;
 
 const Header = ({ShowClick, ShowPersonClick, ParentSearch, ParentSearchEmpty}) => {

@@ -11,7 +11,6 @@ const PersonWrap = styled.div`
     grid-template-columns:1fr 1fr;
     width:100%;
     height:100px;
-
     @media only screen and (max-width: 500px) {
         grid-template-columns:1fr;
         height:200px;

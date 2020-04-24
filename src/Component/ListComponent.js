@@ -20,6 +20,7 @@ const TopicTop = styled(SelectTopic)`
     margin-bottom:0px;
     display:grid;
     grid-template-columns: 1fr 90px 70px;
+    height:40px;
 `;
 const TopicBottom = styled(SelectTopic)`
     display:flex;
@@ -70,7 +71,7 @@ const ButtonPick2 = styled(PickButton)`
 
 const ListWrap = styled.div`
     margin-top:10px;
-    height:430px;
+    height:calc(100vh - 150px);
     overflow-y: scroll;
     padding-right:10px;
     

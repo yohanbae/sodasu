@@ -14,7 +14,7 @@ import {toast} from "react-toastify";
 import firebase from "../base";
 
 import '../App.css';
-
+import logo from "../assets/logo.png";
 
 const BodyWrap = styled.div`
   height:calc(100vh - 120px);
@@ -28,6 +28,7 @@ const BodyWrap = styled.div`
   }
   font-family: 'RecipeKorea';
   @media only screen and (max-width: 500px) {
+    grid-template-columns: 1fr 90vw 1fr;
     height: 90vh;
     overflow:hidden;
   }
@@ -51,16 +52,18 @@ const TopTitleText = styled.div`
 `;
 
 const QuestionPosition = styled.div`
-  width: 100%;
-  min-width:700px;
+  width: 60vw;
   @media only screen and (max-width: 768px) {
-    min-width:400px;
+    min-width:80vw;
   }
+  @media only screen and (max-width: 500px) {
+    min-width:90vw;
+  }  
   z-index:10;
 `;
 
 const QuestionWrap = styled.div`
-  padding:20px 20px;
+  padding:20px 0px;
   border-radius:10px;
   box-sizing: border-box;
   z-index:100;
@@ -69,9 +72,10 @@ const QuestionWrap = styled.div`
 `;
 
 const IconBox = styled.div`
-  width:300px; height:300px;
-  position:absolute; left: -50px; bottom:-50px;
+  width:100%; height:300px;
+  position:absolute; left: 0px; bottom:-50px;
   z-index:-10;
+  text-align:center;
 `;
 
 
@@ -92,6 +96,13 @@ const SkipButtonWrap = styled.div`
   margin-top:20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  padding:0 0px;
+  @media only screen and (max-width: 500px) {
+    height:50px;
+    position:absolute;
+    left:0px;
+    bottom:0px;
+  }
 `
   
 const SkipButton = styled.button`
@@ -147,10 +158,17 @@ const ButtonRight = styled(QuestionButton)`
   }
 `;
 
+const ButtonCenter = styled.div`
+  width:100%; height:100%;
+  display:grid;
+  align-items:center;
+  justify-content:center;
+`;
+
 const HiddenWindow = styled.div`
     border-radius: 5px;
     width:40%;
-    height:500px;
+    height:80vh;
     position: absolute;
     left: 40%;
     top: 50px;
@@ -159,7 +177,7 @@ const HiddenWindow = styled.div`
     @media only screen and (max-width: 768px) {
       width: 80%;
       left: 10%;
-      height: calc(90vh);
+      height: calc(80vh);
     }    
     @media only screen and (max-width: 500px) {
         width: 80%;
@@ -172,7 +190,12 @@ const HiddenPerson = styled(HiddenWindow)`
     left:20%;
     background:#fafafa;
     width:60%;
-    height:400px;
+    height:80vh;
+    @media only screen and (max-width: 768px) {
+      width:80%;
+      left:10%;
+      height: 80vh;
+    }        
     @media only screen and (max-width: 500px) {
         width:90%;
         left:5%;
@@ -257,8 +280,14 @@ const CloseButton = styled.div`
     height:50px;
     font-size:40px;
     z-index: 999;
-    right:20px; bottom:30px;
+    right:30px; bottom:20px;
     cursor:pointer;
+    @media only screen and (max-width: 500px) {
+      width:30px;
+      height:30px;
+      font-size:30px;
+      right:10px; bottom:10px;
+  }    
 `;
 
 function Main({history}) {
@@ -527,7 +556,9 @@ function Main({history}) {
                 </QuestionTitle>
                 <QuestionButtonWrap>
                   <ButtonLeft onClick={()=>handleButton(1)}>{theData.answer_one}</ButtonLeft>
-                  <div></div>
+                  <ButtonCenter>
+                    <img src={logo} width={20} height={20} />
+                  </ButtonCenter>
                   <ButtonRight onClick={()=>handleButton(2)}>{theData.answer_two}</ButtonRight>
                 </QuestionButtonWrap>
                 <IconBox>
