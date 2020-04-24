@@ -282,7 +282,6 @@ function Main({history}) {
 
     const db = firebase.firestore();
     useEffect(() => {
-
         // CREATE NEW ID
         // let newid = '_' + Math.random().toString(36).substr(2, 9) + Math.random().toString(36).substr(2, 9);
         

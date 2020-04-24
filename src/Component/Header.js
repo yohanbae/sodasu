@@ -110,7 +110,7 @@ const Header = ({ShowClick, ShowPersonClick, ParentSearch, ParentSearchEmpty}) =
             <HeaderMiddle>
                 {/* <FaUser style={{color:"#454545", marginTop:'3px', fontSize:'14px'}} onClick={ShowPersonClick} /> */}
                 <Link to={'/'}>
-                <span style={{color:"#454545", marginTop:'0px', fontSize:'15px', paddingTop:'10px', fontWeight:'300', fontFamily: 'RecipeKorea', letterSpacing:'10px'
+                <span style={{color:"#454545", marginTop:'0px', fontSize:'15px', paddingTop:'10px', fontWeight:'300', fontFamily: 'RecipeKorea', letterSpacing:'5px'
                 }}>
                     <img src={logo} width={10} height={10} style={{}} /> 소다수
                 </span>
