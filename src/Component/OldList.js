@@ -5,9 +5,8 @@ import ReactTooltip from "react-tooltip";
 
 const OldWrap = styled.div`
     width:100%; height:calc(80vh - 100px);
-    background:white;
     @media only screen and (max-width: 500px) {
-        height: calc(80vh - 200px);
+        height: calc(70vh - 200px);
     }
 `;
 
@@ -275,10 +274,10 @@ const OldList = ({myData, theData}) => {
                         ))
                     }
                     
-                </ListWrap>
                 {
                         pageEnd ? <NextButton>마지막 페이지입니다</NextButton> : <NextButton onClick={()=>handlePage()}>더보기</NextButton>                
                     }      
+                </ListWrap>
                 <ReactTooltip place='bottom' />          
             </OldWrap>
             :

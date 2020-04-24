@@ -182,7 +182,7 @@ const HiddenWindow = styled.div`
     @media only screen and (max-width: 500px) {
         width: 80%;
         left: 10%;
-        height: calc(80vh);
+        height: calc(70vh);
       }        
 `;
 
@@ -199,7 +199,7 @@ const HiddenPerson = styled(HiddenWindow)`
     @media only screen and (max-width: 500px) {
         width:90%;
         left:5%;
-        height: 80vh;
+        height: 70vh;
     }     
 `
 

@@ -8,7 +8,8 @@ import "../App.css";
 const Wrap = styled.div`
     width:100%;
     margin-top:0px;
-    height:calc(100vh - 150px);
+    height:calc(70vh);
+
 `;
 
 const SelectTopic = styled.span` 
@@ -71,7 +72,7 @@ const ButtonPick2 = styled(PickButton)`
 
 const ListWrap = styled.div`
     margin-top:10px;
-    height:calc(100vh - 150px);
+    height:calc(70vh - 50px);
     overflow-y: scroll;
     padding-right:10px;
     
