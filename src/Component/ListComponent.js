@@ -8,9 +8,9 @@ import "../App.css";
 const Wrap = styled.div`
     width:100%;
     margin-top:0px;
-    height:calc(70vh);
+    height:calc(80vh);
     @media only screen and (max-width: 500px) {
-        height: 100%;
+        height: 80vh;
     }
 `;
 

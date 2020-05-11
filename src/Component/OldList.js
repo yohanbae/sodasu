@@ -7,7 +7,7 @@ const OldWrap = styled.div`
     width:100%; 
     height:calc(80vh - 100px);
     @media only screen and (max-width: 500px) {
-        height: 100%;
+        height: calc(85vh - 200px);
     }
 `;
 
