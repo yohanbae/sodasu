@@ -63,7 +63,7 @@ const SearchBar = styled.input`
     text-align:center;
     cursor:pointer;
     padding:2px 0;
-    font-family: 'RecipeKorea';
+    font-family: 'GmarketSansMedium';
     font-weight:100;
     padding-top:5px;
     &:hover::placeholder{
@@ -83,9 +83,9 @@ const CreateSpan = styled.button`
       border:none;
       border-radius:3px;
       padding:3px;
-      padding-top:7px;
+      padding-top:5px;
       cursor:pointer;
-      font-family: 'RecipeKorea';
+      font-family: 'GmarketSansMedium';
       @media only screen and (max-width: 500px) {
         font-size:10px;
     }     
@@ -125,7 +125,7 @@ const Header = ({ShowClick, ShowPersonClick, ParentSearch, ParentSearchEmpty}) =
                 {/* <FaUser style={{color:"#454545", marginTop:'3px', fontSize:'14px'}} onClick={ShowPersonClick} /> */}
                 <Link to={'/'}>
                 <>
-                    <LogoImg src={logo}/> <TheTitle style={{color:"#454545", marginTop:'0px', fontSize:'15px', paddingTop:'10px', fontWeight:'300', fontFamily: 'RecipeKorea', letterSpacing:'5px'}}>소다수</TheTitle>
+                    <LogoImg src={logo}/> <TheTitle style={{color:"#454545", marginTop:'0px', fontSize:'15px', marginLeft:'10px', paddingTop:'10px', fontWeight:'300', fontFamily: 'GmarketSansMedium', letterSpacing:'5px'}}>소다수</TheTitle>
                 </>
                 </Link>
                 <LoginWrap>
@@ -133,7 +133,7 @@ const Header = ({ShowClick, ShowPersonClick, ParentSearch, ParentSearchEmpty}) =
                     <CreateSpan onClick={ShowPersonClick}>나의 성향보기</CreateSpan>
                     <CreateSpan>
                         <Link to={'/create'}>
-                        설문 만들기 <FaPlus style={{fontSize:'10px'}} />
+                        설문 만들기
                         </Link>
                     </CreateSpan>
                 </LoginWrap>

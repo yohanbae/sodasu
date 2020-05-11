@@ -49,8 +49,8 @@ const TopTitleText = styled.div`
   left:0; top:50px;
   color: rgba(69, 69, 69, 0.8);
   font-size: 13px;
-  font-family: 'RecipeKorea';
-  font-family: 'NanumBarunGothic';
+
+  font-family: 'GmarketSansMedium';
 `;
 
 const QuestionPosition = styled.div`
@@ -115,8 +115,8 @@ const SkipButton = styled.button`
   cursor:pointer;
   border-radius:3px;
   color:white;
-  font-family: 'RecipeKorea';
-  padding-top:10px;
+  font-family: 'GmarketSansMedium';
+  padding-top:5px;
   font-weight:100;
   &:hover{
     background: rgba(52, 101, 235, 1);
@@ -138,7 +138,7 @@ const ButtonLeft = styled(QuestionButton)`
   color: rgba(212, 17, 11, 1);
   background:rgba(212, 17, 11, 0);
   border-bottom-left-radius: 10px;
-  font-family: 'RecipeKorea';
+  font-family: 'GmarketSansMedium';
   padding-top:15px;
   font-weight:300;
   &:hover{
@@ -151,7 +151,7 @@ const ButtonRight = styled(QuestionButton)`
   color: rgba(56, 69, 245, 1);
   background:rgba(56, 69, 245, 0);
   border-bottom-right-radius: 10px;
-  font-family: 'RecipeKorea';
+  font-family: 'GmarketSansMedium';
   padding-top:15px;
   font-weight:300;
   &:hover{
@@ -305,7 +305,7 @@ function Main({history}) {
     const [rightPer, setRightPer] = useState(0);
     const [myAnswer, setMyAnswer] = useState(0);
 
-    const [infoMsg, setInfoMsg] = useState();
+    const [infoMsg, setInfoMsg] = useState("얼마나 많은 사람들이 나와 같은 생각을 갖고 있을까? 질문에 답변 해보세요");
 
     const db = firebase.firestore();
     useEffect(() => {
@@ -387,19 +387,20 @@ function Main({history}) {
 
             // MSG
             const msg = [
-              "얼마나 많은 사람들이 나와 같은 생각을 갖고 있을까? 질문에 답변 해보세요",
+              
               "질문에 답변하면 다른 사람들의 대답과 비교하여 당신의 대중성을 파악해 줍니다",
               "참여하고 싶지 않은 설문에는 '스킨하기' 버튼을 눌러주세요",
               "스킵한 질문은 재접속시에 다시 볼수있어요",
               "내가 대답한 답변은 '나의 성향보기'에서 확인가능합니다",
-              "'질문 만들기'를 클릭해 원하시는 설문을 작성할 수 있습니다"
+              "'질문 만들기'를 클릭해 원하시는 설문을 작성할 수 있습니다",
+              "얼마나 많은 사람들이 나와 같은 생각을 갖고 있을까? 질문에 답변 해보세요",
             ];
             let i = 0;
             setInterval(() => {
               if(i == msg.length) i = 0;
               setInfoMsg(msg[i]);
               i++;
-            }, 3000);
+            }, 4000);
 
             setLoading(true);
         });

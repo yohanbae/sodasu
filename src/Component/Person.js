@@ -91,7 +91,7 @@ const H3 = styled.h3`
     color: ${props => props.active ? `red` : `blue` };
     opacity: 0.8;
     margin-bottom:5px;
-    font-family: 'RecipeKorea';
+    font-family: 'GmarketSansMedium';
     margin-top:10px;
 `;
 
@@ -101,8 +101,8 @@ const H4 = styled.h4`
     font-size:15px;
     color:#1a1a1a;
     margin-bottom:5px;
-    font-family: 'RecipeKorea';
-    font-family: 'NanumBarunGothic';
+    font-family: 'GmarketSansMedium';
+
     `;
 
 const H6 = styled.h6`
@@ -111,8 +111,7 @@ const H6 = styled.h6`
     font-size: 12px;
     color:#1a1a1a;
     margin-bottom:5px;
-    font-family: 'RecipeKorea';
-    font-family: 'NanumBarunGothic';
+    font-family: 'GmarketSansMedium';
 `;
 
 const LoadingWrap = styled.div`

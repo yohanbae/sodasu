@@ -14,10 +14,10 @@ const H5 = styled.p`
     height:50px;
     font-size:13px;    
     padding:0; margin:0;
+    margin-left:10px;
     display:grid;
     align-items:center;
-    font-family: 'RecipeKorea';
-    font-family: 'NanumBarunGothic';
+    font-family: 'GmarketSansMedium';
 `;
 
 const ListWrap = styled.div`
@@ -57,7 +57,7 @@ width:calc(100% - 20px);
     grid-gap: 10px;
 
     padding:3px 0px 3px 10px;
-    font-family: 'RecipeKorea';
+    font-family: 'GmarketSansMedium';
     &:hover{
         background: rgba(217, 217, 217, 0.7);        
     }
@@ -67,15 +67,14 @@ const ListQ = styled.span`
     height:100%;
     display:grid;
     align-items:center;
-    font-family: 'NanumBarunGothic';
+    font-family: 'GmarketSansMedium';
 `;
 
 const ListTitle = styled.div`
     display:grid;
     align-items:center;
-    font-family: 'RecipeKorea';
+    font-family: 'GmarketSansMedium';
     font-weight:100;
-    font-family: 'NanumBarunGothic';
 `;
 
 const Point = styled.div`
@@ -91,7 +90,7 @@ const DataWrap = styled.div`
 const QuestionP = styled.p`
     padding:0; margin:0;
     font-size:12px;
-    font-family: 'NanumBarunGothic';
+    font-family: 'GmarketSansMedium';
     color: ${props => props.active ? `red` : `blue` };
     @media only screen and (max-width: 500px) {
         font-size:10px;
@@ -142,7 +141,7 @@ const NextButton = styled.button`
     font-size:13px;
     border:1px solid lightgray;
     cursor: pointer;
-    font-family: 'RecipeKorea';
+    font-family: 'GmarketSansMedium';
     padding-top:5px;
 `;
 

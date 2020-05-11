@@ -41,7 +41,7 @@ const ButtonPick0 = styled.button`
     padding-top:10px;
     text-align:left;
     background:none;
-    font-family: 'RecipeKorea';
+    font-family: 'GmarketSansMedium';
     
     &:focus{
         outline: none;
@@ -58,7 +58,7 @@ const PickButton = styled.button`
     padding:3px 10px;
     text-align:center;
     cursor:pointer;
-    font-family: 'RecipeKorea';
+    font-family: 'GmarketSansMedium';
     `;
 
 const ButtonPick1 = styled(PickButton)`
@@ -97,7 +97,7 @@ const ListWrap = styled.div`
 
 const ListLi = styled.div`
     margin-bottom:10px;
-    font-size:14px;
+    font-size:12px;
     color:#454545;
     cursor:pointer;
 
@@ -126,8 +126,7 @@ const ListQ = styled.span`
 const ListTitle = styled.div`
     display:grid;
     align-items:center;
-    font-family: 'RecipeKorea';
-    font-family: 'NanumBarunGothic';
+    font-family: 'GmarketSansMedium';
 `;
 
 const Point = styled.div`
