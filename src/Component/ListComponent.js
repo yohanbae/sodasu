@@ -8,9 +8,9 @@ import "../App.css";
 const Wrap = styled.div`
     width:100%;
     margin-top:0px;
-    height:calc(80vh);
+    height:calc(80vh - 50px);
     @media only screen and (max-width: 500px) {
-        height: 80vh;
+        height: calc(80vh);
     }
 `;
 
@@ -28,7 +28,7 @@ const TopicTop = styled(SelectTopic)`
 const TopicBottom = styled(SelectTopic)`
     display:flex;
     justify-content: flex-end;
-    margin-top:10px;
+    margin-top:0px;
     position: absolute;
     bottom:0; right:0;
 `;
@@ -74,7 +74,7 @@ const ButtonPick2 = styled(PickButton)`
 
 const ListWrap = styled.div`
     margin-top:10px;
-    height:calc(70vh - 50px);
+    height: 100%;
     overflow-y: scroll;
     padding-right:10px;
     
@@ -248,11 +248,7 @@ const ListComponent = forwardRef(({props, onClose}, ref) => {
                 }
 
             </ListWrap>
-            <TopicBottom>
-                {/* <ButtonPick1>나의답변</ButtonPick1>
-                <ButtonPick1>소수답변</ButtonPick1>
-                <ButtonPick2>다수답변</ButtonPick2> */}
-            </TopicBottom>  
+
             </>
             : <LoadingWrap>
                 <img src={LoadingGif} style={{width:'100px', height:'100px'}} />
