@@ -38,7 +38,6 @@ const Wrap2 = styled.div`
 const TheBar = styled.div`
     width: 100%;
     height:20px;
-    border-radius:5px;
     position:absolute;
     bottom:15px;
     left: 0;
@@ -47,7 +46,6 @@ const TheBar = styled.div`
 const BarWrap = styled.div`
     width:200px;
     height:20px;
-    border-radius:5px;
     border:2px solid white;
     position: absolute;
     left: 50%;
@@ -75,8 +73,6 @@ const TheLeft = styled.div`
     height:20px;
     background:red;
     opacity:0.5;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
 `;
 
 const TheRight = styled.div`
@@ -86,8 +82,6 @@ const TheRight = styled.div`
     height:20px;
     background:blue;
     opacity:0.5;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
 `;
 
 const H3 = styled.h3`
@@ -170,40 +164,39 @@ const Person = () => {
                         meLeft = false;
                     }
 
-                    // 이 질문의 소수/다수는 어느쪽인가?
-                    let otherLeft;
-                    let momo = meme.questions.find(val => val.id == data.id)
-                    if(momo.answer_one_count > momo.answer_two_count) {
-                        otherLeft = true;
-                    }else{
-                        otherLeft = false;
-                    }
 
-                    // 나의 대답은 소수쪽인가 다수쪽인가?
-                    if(otherLeft == true){ // 이 문제의 다수는 왼쪽것입니다.
-                        if(meLeft == true){ // 나의 대답도 왼쪽에 있습니다.
-                            myRight++; // 그러므로 나는 다수입니다. 다수값을 하나 올립니다.
+                    
+                    let momo = meme.questions.find(val => val.id == data.id);
+                    // 서버측에도 똑같은 질문이 남아있는지 확인해보자.
+                    // 없다면 다음 data.map index로 넘어가 작업을 계속 수행하시오.
+                    if(momo){ 
+                        // 이 질문의 소수/다수는 어느쪽인가?
+                        let otherLeft;
+                        if(momo.answer_one_count > momo.answer_two_count) {
+                            otherLeft = true;
                         }else{
-                            myLeft++; // 다수가 아니므로, 소수값을 하나 올립니다.
+                            otherLeft = false;
                         }
+    
+                        // 나의 대답은 소수쪽인가 다수쪽인가?
+                        if(otherLeft == true){ // 이 문제의 다수는 왼쪽것입니다.
+                            if(meLeft == true){ // 나의 대답도 왼쪽에 있습니다.
+                                myRight++; // 그러므로 나는 다수입니다. 다수값을 하나 올립니다.
+                            }else{
+                                myLeft++; // 다수가 아니므로, 소수값을 하나 올립니다.
+                            }
+                        }
+    
+                        if(otherLeft == false){ // 이 문제의 다수는 오른쪽 것입니다.
+                            if(meLeft == true){ // 나의 대답은 왼쪽에 있습니다.
+                                myLeft++; // 그러므로 나는 소수입니다
+                            }else{
+                                myRight++; 
+                            }
+                        }                    
+    
+                        console.log("답은", meLeft, myLeft, myRight);
                     }
-
-                    if(otherLeft == false){ // 이 문제의 다수는 오른쪽 것입니다.
-                        if(meLeft == true){ // 나의 대답은 왼쪽에 있습니다.
-                            myLeft++; // 그러므로 나는 소수입니다
-                        }else{
-                            myRight++; 
-                        }
-                    }                    
-
-
-                    // if(meLeft == true && otherLeft == true) {
-                    //     myLeft++;
-                    // }else{
-                    //     myRight++;
-                    // }
-
-                    console.log("답은", meLeft, myLeft, myRight);
 
                 });
 

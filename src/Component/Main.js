@@ -215,7 +215,6 @@ const DisplayPercent = styled.div`
 const TheBar = styled.div`
     width: 100%;
     height:20px;
-    border-radius:5px;
     position:absolute;
     top:0;
     left: 0;
@@ -224,7 +223,6 @@ const TheBar = styled.div`
 const BarWrap = styled.div`
     width:200px;
     height:20px;
-    border-radius:5px;
     border:2px solid white;
     position: absolute;
     left: 50%;
@@ -252,8 +250,6 @@ const TheLeft = styled.div`
     height:20px;
     background:red;
     opacity:0.5;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
     transition:300ms;
 `;
 
@@ -264,8 +260,6 @@ const TheRight = styled.div`
     height:20px;
     background:blue;
     opacity:0.5;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
     transition:300ms;
 `;
 
@@ -311,6 +305,8 @@ function Main({history}) {
     const [rightPer, setRightPer] = useState(0);
     const [myAnswer, setMyAnswer] = useState(0);
 
+    const [infoMsg, setInfoMsg] = useState();
+
     const db = firebase.firestore();
     useEffect(() => {
         // CREATE NEW ID
@@ -336,8 +332,9 @@ function Main({history}) {
 
             // need to process to get rid of data already answered
             let onlyInA = meme.questions.filter(comparer(myData));
-            let onlyInB = myData.filter(comparer(meme.questions));
-            let finalData = onlyInA.concat(onlyInB);
+            // let onlyInB = myData.filter(comparer(meme.questions));
+            // let finalData = onlyInA.concat(onlyInB);
+            let finalData = onlyInA;
             finalData.reverse();
 
             if(finalData.length > 0){
@@ -387,6 +384,22 @@ function Main({history}) {
                 setTheData(noMore[0]);
                 setNextLink("nono");
             }
+
+            // MSG
+            const msg = [
+              "얼마나 많은 사람들이 나와 같은 생각을 갖고 있을까? 질문에 답변 해보세요",
+              "질문에 답변하면 다른 사람들의 대답과 비교하여 당신의 대중성을 파악해 줍니다",
+              "참여하고 싶지 않은 설문에는 '스킨하기' 버튼을 눌러주세요",
+              "스킵한 질문은 재접속시에 다시 볼수있어요",
+              "내가 대답한 답변은 '나의 성향보기'에서 확인가능합니다",
+              "'질문 만들기'를 클릭해 원하시는 설문을 작성할 수 있습니다"
+            ];
+            let i = 0;
+            setInterval(() => {
+              if(i == msg.length) i = 0;
+              setInfoMsg(msg[i]);
+              i++;
+            }, 3000);
 
             setLoading(true);
         });
@@ -550,7 +563,7 @@ function Main({history}) {
             {
             loading ?
             <>
-            <TopTitleText>나는 소수일까 다수일까? 질문에 솔직하게 대답하여 당신의 성향을 알아보세요!</TopTitleText>
+            <TopTitleText>{infoMsg}</TopTitleText>
             <QuestionPosition>
               <QuestionWrap>
                 <QuestionTitle>

@@ -165,9 +165,9 @@ const ListComponent = forwardRef(({props, onClose}, ref) => {
         db.collection("question").doc("6QpyEuoFlECaqPcX2teg").get().then(doc => {
             let meme = doc.data();
             let onlyInA = meme.questions.filter(comparer(myData));
-            let onlyInB = myData.filter(comparer(meme.questions));
-            let finalData = onlyInA.concat(onlyInB);
-            
+            // let onlyInB = myData.filter(comparer(meme.questions));
+            // let finalData = onlyInA.concat(onlyInB);
+            let finalData = onlyInA;
             setOriginalList(finalData);
             setList(finalData.reverse());
             setLoading(true);

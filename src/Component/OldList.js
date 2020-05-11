@@ -184,43 +184,47 @@ const OldList = ({myData, theData}) => {
 
             // IMPORT!!!! 전부다 필요한 코드야. PAGINATION 테스트하기위해 잠시 지움
 
-            let otherLeft;
             let momo = theData.find(val => val.id == data.id);
-            if(momo.answer_one_count > momo.answer_two_count) {
-                otherLeft = true;
-            }else{
-                otherLeft = false;
-            }            
-
-            let myLeft;
-            // 나의 대답은 소수쪽인가 다수쪽인가?
-            if(otherLeft == true){ // 이 문제의 다수는 왼쪽것입니다.
-                if(meLeft == true){ // 나의 대답도 왼쪽에 있습니다.
-                    myLeft = false; // 그러므로 나는 다수입니다. myLeft을 true로.
+            //서버측에도 동일한 질문이 있는지 확인할 것
+            if(momo){
+                let otherLeft;
+                if(momo.answer_one_count > momo.answer_two_count) {
+                    otherLeft = true;
                 }else{
-                    myLeft = true; // 다수가 아니므로, 소수값을 하나 올립니다.
+                    otherLeft = false;
+                }            
+    
+                let myLeft;
+                // 나의 대답은 소수쪽인가 다수쪽인가?
+                if(otherLeft == true){ // 이 문제의 다수는 왼쪽것입니다.
+                    if(meLeft == true){ // 나의 대답도 왼쪽에 있습니다.
+                        myLeft = false; // 그러므로 나는 다수입니다. myLeft을 true로.
+                    }else{
+                        myLeft = true; // 다수가 아니므로, 소수값을 하나 올립니다.
+                    }
                 }
+    
+                if(otherLeft == false){ // 이 문제의 다수는 오른쪽 것입니다.
+                    if(meLeft == true){ // 나의 대답은 왼쪽에 있습니다.
+                        myLeft = true; // 그러므로 나는 소수입니다
+                    }else{
+                        myLeft = false; 
+                    }
+                }       
+                
+    
+                let total = momo.answer_one_count + momo.answer_two_count;
+    
+                temp.push({
+                    id: data.id,
+                    question: data.question,
+                    status: myLeft,
+                    leftPer: Math.floor(momo.answer_one_count / total * 100),
+                    rightPer: Math.floor(momo.answer_two_count / total * 100),
+                    myAnswer
+                });
             }
 
-            if(otherLeft == false){ // 이 문제의 다수는 오른쪽 것입니다.
-                if(meLeft == true){ // 나의 대답은 왼쪽에 있습니다.
-                    myLeft = true; // 그러므로 나는 소수입니다
-                }else{
-                    myLeft = false; 
-                }
-            }       
-            
-
-            let total = momo.answer_one_count + momo.answer_two_count;
-
-            temp.push({
-                id: data.id,
-                question: data.question,
-                status: myLeft,
-                leftPer: Math.floor(momo.answer_one_count / total * 100),
-                rightPer: Math.floor(momo.answer_two_count / total * 100),
-                myAnswer
-            });
         });
         // IMPORT!!!! 전부다 필요한 코드야. PAGINATION 테스트하기위해 잠시 지움
 
@@ -246,11 +250,11 @@ const OldList = ({myData, theData}) => {
                         <ListLi key={data.id} data-tip={
                             data.status ?  //나는 소수입니다
                                 (data.leftPer > data.rightPer) ?
-                                `당신의 의견은 전체 ${data.rightPer}% 입니다. 다수가 당신과 동의하지 않습니다` : `당신의 의견은 전체 ${data.leftPer}% 입니다. 다수가 당신과 동의하지 않습니다.`
+                                `당신의 의견은 전체의 ${data.rightPer}% 입니다. 다수가 당신과 동의하지 않습니다` : `당신의 의견은 전체 ${data.leftPer}% 입니다. 다수가 당신과 동의하지 않습니다.`
                             : 
                             //나는 다수입니다
                                 (data.leftPer > data.rightPer) ?
-                                `당신의 의견은 전체 ${data.leftPer}% 입니다. 다수가 당신과 동의합니다.` : `당신의 의견은 전체 ${data.rightPer}% 입니다. 다수가 당신과 동의합니다.`
+                                `당신의 의견은 전체의 ${data.leftPer}% 입니다. 다수가 당신과 동의합니다.` : `당신의 의견은 전체 ${data.rightPer}% 입니다. 다수가 당신과 동의합니다.`
                         }> 
                             <ListQ>Q</ListQ>              
                             <ListTitle>{data.question}</ListTitle>

@@ -133,7 +133,7 @@ const Header = ({ShowClick, ShowPersonClick, ParentSearch, ParentSearchEmpty}) =
                     <CreateSpan onClick={ShowPersonClick}>나의 성향보기</CreateSpan>
                     <CreateSpan>
                         <Link to={'/create'}>
-                        질문 만들기 <FaPlus style={{fontSize:'10px'}} />
+                        설문 만들기 <FaPlus style={{fontSize:'10px'}} />
                         </Link>
                     </CreateSpan>
                 </LoginWrap>

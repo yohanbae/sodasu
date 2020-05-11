@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import HeaderCreate from "./HeaderCreate";
 import Footer from "./Footer";
 import useInput from "../useInput";
 import {toast} from "react-toastify";
 import firebase from "../base";
+import Recaptcha from "react-recaptcha";
 
 const Wrap = styled.div`
     height: 100vh;
@@ -80,23 +81,37 @@ const Create = ({history}) => {
     const answer_one = useInput("");
     const answer_two = useInput("");    
 
+    const [isVerified, setIsVerified] = useState(false);
     const db = firebase.firestore();
 
     const handleSubmit = () => {
-        if(question.value=="" || answer_one.value=="" || answer_two.value=="") {
-            toast.error("Please fill up all information", {hideProgressBar: true});
-            return;
+        if(isVerified){
+            console.log('run submit, succeess');
+        }else {
+            console.log('verify you are humna');
         }
+        // if(question.value=="" || answer_one.value=="" || answer_two.value=="") {
+        //     toast.error("Please fill up all information", {hideProgressBar: true});
+        //     return;
+        // }
 
-        let newId = '_' + Math.random().toString(36).substr(2, 9);
-        let newData = { id: newId, question: question.value, answer_one: answer_one.value, answer_two: answer_two.value, answer_one_count:0, answer_two_count:0}
+        // let newId = '_' + Math.random().toString(36).substr(2, 9);
+        // let newData = { id: newId, question: question.value, answer_one: answer_one.value, answer_two: answer_two.value, answer_one_count:0, answer_two_count:0}
 
-        db.collection("question").doc("6QpyEuoFlECaqPcX2teg").update({
-            questions: firebase.firestore.FieldValue.arrayUnion(newData)
-        });
+        // db.collection("question").doc("6QpyEuoFlECaqPcX2teg").update({
+        //     questions: firebase.firestore.FieldValue.arrayUnion(newData)
+        // });
 
-        toast.success("새로운 질문이 등록되었습니다. 감사합니다.", {hideProgressBar: true});
-        history.push('/');
+        // toast.success("새로운 질문이 등록되었습니다. 감사합니다.", {hideProgressBar: true});
+        // history.push('/');
+    }
+
+    const recaptchaLoaded = () => {
+        console.log('capch successfully loaded');
+    }
+    
+    const verifyCallback = (response) => {
+        if(response) setIsVerified(true);
     }
 
     return (
@@ -104,7 +119,7 @@ const Create = ({history}) => {
         <HeaderCreate />
         <Wrap>
             <Box>
-                <h4 style={{fontFamily:'RecipeKorea', fontWeight:'100'}}>설문 만들기</h4>
+                <h4 style={{fontFamily:'RecipeKorea', fontWeight:'100'}}>설문 만들기 RE</h4>
                 <InputQuestion maxLength="200" type="text" value={question.value} onChange={question.onChange} placeholder="예) 탕수육은 부먹이 좋아요? 찍먹이 좋아요?" />
                 <AnswerBox>
                     <Answer>
@@ -116,10 +131,15 @@ const Create = ({history}) => {
                     <InputAnswer maxLength="20"  type="text" value={answer_two.value} onChange={answer_two.onChange} placeholder="예) 찍먹이 인생의 진리!" />
                     </Answer>
                 </AnswerBox>
+                <Recaptcha
+                    sitekey="6Lc9uPUUAAAAAJsnv2TBFbejjBDHSZc3pxUBHs2r"
+                    render="explicit"
+                    verifyCallback={verifyCallback}
+                    onloadCallback={recaptchaLoaded}
+                />
                 <ButtonWrap>
                 <button style={{padding:'10px', fontFamily: 'RecipeKorea', border:'none'}} onClick={()=>handleSubmit()}>SUBMIT</button>
                 </ButtonWrap>
-
             </Box>
 
         </Wrap>
