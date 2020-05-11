@@ -9,7 +9,9 @@ const Wrap = styled.div`
     width:100%;
     margin-top:0px;
     height:calc(70vh);
-
+    @media only screen and (max-width: 500px) {
+        height: 100%;
+    }
 `;
 
 const SelectTopic = styled.span` 

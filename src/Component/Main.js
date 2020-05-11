@@ -170,21 +170,21 @@ const ButtonCenter = styled.div`
 const HiddenWindow = styled.div`
     border-radius: 5px;
     width:40%;
-    height:80vh;
+    height:calc(100vh - 60px);
     position: absolute;
     left: 40%;
     top: 50px;
     z-index:100;
     background:white;
     @media only screen and (max-width: 768px) {
-      width: 80%;
-      left: 10%;
-      height: calc(80vh);
+      width:98%;
+      left:1%;
+      height:calc(100vh - 80px);
     }    
     @media only screen and (max-width: 500px) {
-        width: 80%;
-        left: 10%;
-        height: calc(70vh);
+      width:98%;
+      left:1%;
+        height:calc(100vh - 80px);
       }        
 `;
 
@@ -192,16 +192,17 @@ const HiddenPerson = styled(HiddenWindow)`
     left:20%;
     background:#fafafa;
     width:60%;
-    height:80vh;
+    height:calc(100vh - 60px);
+    z-index:990;
     @media only screen and (max-width: 768px) {
-      width:80%;
-      left:10%;
-      height: 80vh;
+      width:98%;
+      left:1%;
+      height: calc(100vh - 80px);
     }        
     @media only screen and (max-width: 500px) {
-        width:90%;
-        left:5%;
-        height: 70vh;
+      width:98%;
+      left:1%;
+        height: calc(100vh - 80px);
     }     
 `
 

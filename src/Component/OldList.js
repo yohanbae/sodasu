@@ -4,9 +4,10 @@ import ReactTooltip from "react-tooltip";
 import "../App.css";
 
 const OldWrap = styled.div`
-    width:100%; height:calc(80vh - 100px);
+    width:100%; 
+    height:calc(80vh - 100px);
     @media only screen and (max-width: 500px) {
-        height: calc(70vh - 200px);
+        height: 100%;
     }
 `;
 
