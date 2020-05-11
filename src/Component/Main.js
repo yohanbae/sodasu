@@ -456,7 +456,7 @@ function Main({history}) {
             if(nextLink !== "nono"){
                 history.push(`/main/${nextLink}`);
             }
-        }, 500);
+        }, 1500);
 
         // save newRow to localstorage
         // add 1 to question in Firebase server
