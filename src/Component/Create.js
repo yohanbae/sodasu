@@ -30,7 +30,7 @@ const Input = styled.input`
     width: 100%;
     padding-left:5px;
     font-size:14px;
-    font-family: 'RecipeKorea';
+    font-family: 'GmarketSansMedium';
     padding-top:5px;
     @media only screen and (max-width: 500px) {
         font-size:10px;
@@ -133,7 +133,7 @@ const Create = ({history}) => {
                     onChange={verifyCallback}
                 />
                 <ButtonWrap>
-                <button style={{padding:'10px', background:'rgba(52, 101, 235, 0.8)', color:'white', fontFamily: 'GmarketSansMedium', border:'none'}} onClick={()=>handleSubmit()}>SUBMIT</button>
+                <button style={{padding:'10px', background:'rgba(52, 101, 235, 0.8)', color:'white', fontFamily: 'GmarketSansMedium', border:'none', cursor:'pointer'}} onClick={()=>handleSubmit()}>SUBMIT</button>
                 </ButtonWrap>
 
             </Box>

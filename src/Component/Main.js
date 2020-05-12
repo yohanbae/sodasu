@@ -9,6 +9,8 @@ import ListComponent from "./ListComponent";
 import Person from "./Person";
 
 import { AiOutlineUser } from "react-icons/ai";
+import {FaQuestion} from "react-icons/fa";
+
 import LoadingGif from "../assets/loading.gif";
 import {toast} from "react-toastify";
 import firebase from "../base";
@@ -308,7 +310,7 @@ function Main({history}) {
     const [rightPer, setRightPer] = useState(0);
     const [myAnswer, setMyAnswer] = useState(0);
 
-    const [infoMsg, setInfoMsg] = useState("얼마나 많은 사람들이 나와 같은 생각을 갖고 있을까? 질문에 답변 해보세요");
+    const [infoMsg, setInfoMsg] = useState("누구나 참여가능한 온라인 3초 설문");
 
     const db = firebase.firestore();
     useEffect(() => {
@@ -403,9 +405,11 @@ function Main({history}) {
         "질문에 답변하면 다른 사람들의 대답과 비교하여 당신의 성향을 파악해 줍니다",
         "참여하고 싶지 않은 설문에는 '스킨하기' 버튼을 눌러주세요",
         "스킵한 질문은 재접속시에 다시 볼수있어요",
-        "내가 대답한 답변은 '나의 성향보기'에서 확인가능합니다",
+        "이미 대답한 답변의 결과는 '나의 성향보기'에서 확인가능합니다",
         "'질문 만들기'를 클릭해 원하시는 설문을 작성할 수 있습니다",
+        "업로드 된 질문은 전부 익명처리 됩니다",
         "얼마나 많은 사람들이 나와 같은 생각을 갖고 있을까? 질문에 답변 해보세요",
+        "누구나 참여가능한 온라인 3초 설문"
       ];
 
       let i = 0;
@@ -592,7 +596,7 @@ function Main({history}) {
                   <ButtonRight onClick={()=>handleButton(2)}>{theData.answer_two}</ButtonRight>
                 </QuestionButtonWrap>
                 <IconBox>
-                  <AiOutlineUser style={{fontSize:"300px", opacity:"0.1", color:"blue", zIndex:-10 }} />
+                  <FaQuestion style={{fontSize:"350px", opacity:"0.1", color:"blue", zIndex:-10 }} />
                 </IconBox>
               </QuestionWrap>
 
@@ -624,8 +628,6 @@ function Main({history}) {
                 {/* <Link to={`/${nextLink}`}>SKIP</Link> */}
                 </div>
               </SkipButtonWrap>
-
-
 
             </QuestionPosition>
             </>
