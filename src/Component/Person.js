@@ -133,7 +133,7 @@ const Person = () => {
 
     useEffect(() => {
         setLoading(false);
-
+        let dbWork;
         let myData;
         if(localStorage.getItem('sosudasu')){
             myData = JSON.parse(localStorage.getItem('sosudasu'));
@@ -145,13 +145,23 @@ const Person = () => {
         if(myData.length == 0){
             setLoading(true);
         }else{
-            db.collection("question").doc("6QpyEuoFlECaqPcX2teg").get().then(doc => {
+            let dbWork = db.collection("question").doc("6QpyEuoFlECaqPcX2teg").get().then(doc => {
                 let meme = doc.data();
                 setTheData(meme.questions);
 
                 // IMPORTANT!!!! DO NOT DELETE!
                 let myLeft = 0;
                 let myRight = 0
+
+                if(myData.length == 1){
+                    let checkFirst = meme.questions.find(val => val.id == myData[0].id);
+                    if(!checkFirst){
+                        setMyData([]);
+                        setLoading(true);
+                        return null;
+                    } 
+                        
+                }
 
                 myData.map(data => {
                     //Check my RIGHT / LEFT
@@ -162,8 +172,6 @@ const Person = () => {
                     }else{
                         meLeft = false;
                     }
-
-
                     
                     let momo = meme.questions.find(val => val.id == data.id);
                     // 서버측에도 똑같은 질문이 남아있는지 확인해보자.
@@ -192,22 +200,25 @@ const Person = () => {
                             }else{
                                 myRight++; 
                             }
-                        }                    
-    
-                        console.log("답은", meLeft, myLeft, myRight);
+                        }
                     }
+
+                    let lele = Math.floor(myLeft / (myLeft + myRight) * 100);
+                    let riri = Math.floor(myRight / (myLeft + myRight) * 100);
+    
+                    setLeftBar(lele);
+                    setRightBar(riri);
+                    setLoading(true);      
 
                 });
 
-                let lele = Math.floor(myLeft / (myLeft + myRight) * 100);
-                let riri = Math.floor(myRight / (myLeft + myRight) * 100);
 
-                setLeftBar(lele);
-                setRightBar(riri);
-                setLoading(true);
             });
         }
-
+        return () => {
+            // executed when unmount
+            if(dbWork) dbWork();
+        }
     }, []);
 
 

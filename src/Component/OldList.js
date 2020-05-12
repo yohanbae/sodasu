@@ -154,7 +154,6 @@ const OldList = ({myData, theData}) => {
     const [resultData, setResultData] = useState([]);
 
     useEffect(() => {
-        console.log('initial', page);
         setLoading(false);
 
         let pageData = [];

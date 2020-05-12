@@ -46,7 +46,7 @@ const InputQuestion = styled.textarea`
     border:1px solid lightgray;
     border-radius:5px;
     resize: none;
-    font-family: 'RecipeKorea';
+    font-family: 'GmarketSansMedium';
     padding-top:5px;
 `;
 const InputAnswer = styled(Input)`
@@ -68,7 +68,7 @@ const Answer = styled.div`
 
 const H5 = styled.h5`
     margin:0; margin-bottom:5px;
-    font-family: 'RecipeKorea';
+    font-family: 'GmarketSansMedium';
 `;
 
 const ButtonWrap = styled.div`
@@ -116,7 +116,7 @@ const Create = ({history}) => {
         <HeaderCreate />
         <Wrap>
             <Box>
-                <h4 style={{fontFamily:'RecipeKorea', fontWeight:'100'}}>설문 만들기 RE</h4>
+                <h4 style={{fontFamily:'GmarketSansMedium', fontWeight:'100'}}>설문 만들기</h4>
                 <InputQuestion maxLength="200" type="text" value={question.value} onChange={question.onChange} placeholder="예) 탕수육은 부먹이 좋아요? 찍먹이 좋아요?" />
                 <AnswerBox>
                     <Answer>
@@ -133,7 +133,7 @@ const Create = ({history}) => {
                     onChange={verifyCallback}
                 />
                 <ButtonWrap>
-                <button style={{padding:'10px', fontFamily: 'RecipeKorea', border:'none'}} onClick={()=>handleSubmit()}>SUBMIT</button>
+                <button style={{padding:'10px', background:'rgba(52, 101, 235, 0.8)', color:'white', fontFamily: 'GmarketSansMedium', border:'none'}} onClick={()=>handleSubmit()}>SUBMIT</button>
                 </ButtonWrap>
 
             </Box>

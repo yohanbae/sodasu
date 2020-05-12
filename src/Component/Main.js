@@ -22,11 +22,11 @@ const BodyWrap = styled.div`
   display:grid;
   grid-template-columns: 20% 60% 20%;
   z-index:1;
+  font-family: 'GmarketSansMedium';
 
   @media only screen and (max-width: 768px) {
     grid-template-columns: 10% 80% 10%;    
   }
-  font-family: 'RecipeKorea';
   @media only screen and (max-width: 500px) {
     grid-template-columns: 1fr 90vw 1fr;
     height: 90vh;
@@ -287,6 +287,7 @@ const CloseButton = styled.div`
   }    
 `;
 
+
 function Main({history}) {
     const [show, setShow] = useState(false);
     const [showPerson, setShowPerson] = useState(false);
@@ -299,6 +300,7 @@ function Main({history}) {
     const [percent, setPercent] = useState([]);
 
     const [done, setDone] = useState(false);
+    const [loop, setLoop] = useState();
 
     let { id } = useParams();
 
@@ -327,7 +329,7 @@ function Main({history}) {
         }
 
 
-        db.collection("question").doc("6QpyEuoFlECaqPcX2teg").get().then(doc => {
+        let dbWork = db.collection("question").doc("6QpyEuoFlECaqPcX2teg").get().then(doc => {
             let meme = doc.data();
             setOriginalData(meme);
 
@@ -351,7 +353,6 @@ function Main({history}) {
                 } else {
                     let result = finalData.find(data => data.id === id);
                     if(result){
-                        console.log("Found ", result);
                         setTheData(result);
                         setPercent({
                             one : result.answer_one_count,
@@ -367,7 +368,7 @@ function Main({history}) {
                             setNextLink(finalData[index + 1].id);
                         }
                     } else {
-                        console.log("이미 답변을 했거나 존재하지 않는 페이지입니다");
+                        // console.log("이미 답변을 했거나 존재하지 않는 페이지입니다");
                         setTheData(finalData[0]);
                         setPercent({
                             one : finalData[0].answer_one_count,
@@ -386,26 +387,39 @@ function Main({history}) {
                 setNextLink("nono");
             }
 
-            // MSG
-            const msg = [
-              
-              "질문에 답변하면 다른 사람들의 대답과 비교하여 당신의 대중성을 파악해 줍니다",
-              "참여하고 싶지 않은 설문에는 '스킨하기' 버튼을 눌러주세요",
-              "스킵한 질문은 재접속시에 다시 볼수있어요",
-              "내가 대답한 답변은 '나의 성향보기'에서 확인가능합니다",
-              "'질문 만들기'를 클릭해 원하시는 설문을 작성할 수 있습니다",
-              "얼마나 많은 사람들이 나와 같은 생각을 갖고 있을까? 질문에 답변 해보세요",
-            ];
-            let i = 0;
-            setInterval(() => {
-              if(i == msg.length) i = 0;
-              setInfoMsg(msg[i]);
-              i++;
-            }, 4000);
-
             setLoading(true);
+
+            return () => {
+              // executed when unmount
+              dbWork();
+            }
+
         });
     }, [id]);
+
+    useEffect(() => {
+      // MSG
+      const msg = [              
+        "질문에 답변하면 다른 사람들의 대답과 비교하여 당신의 성향을 파악해 줍니다",
+        "참여하고 싶지 않은 설문에는 '스킨하기' 버튼을 눌러주세요",
+        "스킵한 질문은 재접속시에 다시 볼수있어요",
+        "내가 대답한 답변은 '나의 성향보기'에서 확인가능합니다",
+        "'질문 만들기'를 클릭해 원하시는 설문을 작성할 수 있습니다",
+        "얼마나 많은 사람들이 나와 같은 생각을 갖고 있을까? 질문에 답변 해보세요",
+      ];
+
+      let i = 0;
+      setLoop(
+        setInterval(() => {
+          if(i == msg.length) i = 0;
+          setInfoMsg(msg[i]);
+          i++;
+        }, 4000));
+
+        return () => {
+          clearInterval(loop);
+        }
+    }, []);
       
     const setDisplayPercent = (one, two) => {
         if(one == 0 && two == 0){
@@ -451,12 +465,11 @@ function Main({history}) {
             }
         }        
         setDone(true);
-        console.log(newRow);
         setTimeout(() => {
             if(nextLink !== "nono"){
                 history.push(`/main/${nextLink}`);
             }
-        }, 1500);
+        }, 1000);
 
         // save newRow to localstorage
         // add 1 to question in Firebase server

@@ -44,9 +44,9 @@ const Footer = () => {
       <>
       <TheFooter>
         <a href="mailto:hanison.dev@gmail.com?subject=ToHanison">
-        <FooterContact>HANISON</FooterContact>
+        <FooterContact>소다수 3초 설문 플랫폼</FooterContact>
         <TheWrap>
-          <LogoImg src={logo}/> <TheTitle style={{color:"#454545", marginTop:'0px', marginLeft:'5px', fontSize:'12px', paddingTop:'5px', fontWeight:'100', fontFamily: 'GmarketSansMedium', letterSpacing:'3px'}}>소다수</TheTitle>
+          <LogoImg src={logo}/> <TheTitle style={{color:"#454545", marginTop:'0px', marginLeft:'5px', fontSize:'12px', paddingTop:'5px', fontWeight:'100', fontFamily: 'GmarketSansMedium', letterSpacing:'3px'}}>소다수 3초설문 플랫폼</TheTitle>
         </TheWrap>
         </a>
       </TheFooter>
