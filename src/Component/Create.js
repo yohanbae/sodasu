@@ -1,14 +1,51 @@
 import React, {useState} from "react";
 import styled from "styled-components";
-import HeaderCreate from "./HeaderCreate";
-import Footer from "./Footer";
+
 import useInput from "../useInput";
 import {toast} from "react-toastify";
 import firebase from "../base";
 import ReCAPTCHA from "react-google-recaptcha";
 
+import { MdBackspace } from "react-icons/md";
+import { Link } from 'react-router-dom'
+
+
+const Header = styled.div`
+height:50px;
+background:rgba(56, 99, 225, 0.7);
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    align-items:center;
+
+    font-family: 'Quicksand', sans-serif;
+    font-weight:300;
+`
+const Title = styled.div`
+    color:white;
+    font-size:12px;
+    padding-left:15px;
+    font-weight:600;
+`
+
+const UL = styled.ul`
+    float:right;
+    text-align:right;
+    padding-right:15px;
+`
+const LI = styled.li`
+    list-style:none;
+    display:inline;
+    margin-right:20px;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+    &:last-child {
+        margin-right:0;
+    }
+`
+
 const Wrap = styled.div`
-    height: 100vh;
+    height: calc(100vh - 40px);
     width:100vw;
     display:grid;
     justify-content: center;
@@ -30,7 +67,8 @@ const Input = styled.input`
     width: 100%;
     padding-left:5px;
     font-size:14px;
-    font-family: 'GmarketSansMedium';
+    font-family: 'Quicksand', sans-serif;
+    font-weight:600;
     padding-top:5px;
     @media only screen and (max-width: 500px) {
         font-size:10px;
@@ -46,8 +84,9 @@ const InputQuestion = styled.textarea`
     border:1px solid lightgray;
     border-radius:5px;
     resize: none;
-    font-family: 'GmarketSansMedium';
+    font-family: 'Quicksand', sans-serif;
     padding-top:5px;
+    font-weight:600;
 `;
 const InputAnswer = styled(Input)`
     width: calc(100% - 20px);
@@ -68,7 +107,7 @@ const Answer = styled.div`
 
 const H5 = styled.h5`
     margin:0; margin-bottom:5px;
-    font-family: 'GmarketSansMedium';
+    font-family: 'Quicksand', sans-serif;
 `;
 
 const ButtonWrap = styled.div`
@@ -99,7 +138,7 @@ const Create = ({history}) => {
                 questions: firebase.firestore.FieldValue.arrayUnion(newData)
             });
 
-            toast.success("새로운 질문이 등록되었습니다. 감사합니다.", {hideProgressBar: true});
+            toast.success("New question added. Thank you.", {hideProgressBar: true});
             history.push('/');
         }else {
             toast.error("Please verify you are not a robot", {hideProgressBar: true});
@@ -113,19 +152,25 @@ const Create = ({history}) => {
 
     return (
         <>
-        <HeaderCreate />
+        <Header>
+            <Title>soda</Title>
+            <UL>
+                <LI><Link to={'/'}><MdBackspace /></Link></LI>
+            </UL>
+        </Header>
         <Wrap>
+
             <Box>
-                <h4 style={{fontFamily:'GmarketSansMedium', fontWeight:'100'}}>설문 만들기</h4>
-                <InputQuestion maxLength="200" type="text" value={question.value} onChange={question.onChange} placeholder="예) 탕수육은 부먹이 좋아요? 찍먹이 좋아요?" />
+                <h4 style={{fontFamily:'Quicksand', fontWeight:'100'}}>Create new question</h4>
+                <InputQuestion maxLength="200" type="text" value={question.value} onChange={question.onChange} placeholder="ex) do you like pizza or pasta better?" />
                 <AnswerBox>
                     <Answer>
-                    <H5>대답 1</H5>
-                    <InputAnswer maxLength="40"  type="text" value={answer_one.value} onChange={answer_one.onChange} placeholder="예) 당연히 부먹이죠!" />
+                    <H5>answer 1</H5>
+                    <InputAnswer maxLength="40"  type="text" value={answer_one.value} onChange={answer_one.onChange} placeholder="ex) I like pizza better" />
                     </Answer>
                     <Answer>
-                    <H5>대답 2</H5>
-                    <InputAnswer maxLength="40"  type="text" value={answer_two.value} onChange={answer_two.onChange} placeholder="예) 찍먹이 인생의 진리!" />
+                    <H5>answer 2</H5>
+                    <InputAnswer maxLength="40"  type="text" value={answer_two.value} onChange={answer_two.onChange} placeholder="ex) I like pasta better" />
                     </Answer>
                 </AnswerBox>
                 <ReCAPTCHA
@@ -133,13 +178,13 @@ const Create = ({history}) => {
                     onChange={verifyCallback}
                 />
                 <ButtonWrap>
-                <button style={{padding:'10px', background:'rgba(52, 101, 235, 0.8)', color:'white', fontFamily: 'GmarketSansMedium', border:'none', cursor:'pointer'}} onClick={()=>handleSubmit()}>SUBMIT</button>
+                <button style={{borderRadius:'5px', padding:'10px', background:'rgba(52, 101, 235, 0.8)', color:'white', fontFamily: 'GmarketSansMedium', border:'none', cursor:'pointer'}} onClick={()=>handleSubmit()}>SUBMIT</button>
                 </ButtonWrap>
 
             </Box>
 
         </Wrap>
-        <Footer />
+
         </>
     )
 }

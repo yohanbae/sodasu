@@ -118,6 +118,14 @@ const Header = ({ShowClick, ShowPersonClick, ParentSearch, ParentSearchEmpty}) =
         }
     }, [debouncedSearchTerm]);
 
+    function goTest() {
+        Array.prototype.print = function() {
+            console.log(this);
+        }
+        [4,2].print();
+        console.log("HOIDODIOD");
+    }
+
     return (
         <HeaderWrap>
             <div></div>
@@ -135,6 +143,7 @@ const Header = ({ShowClick, ShowPersonClick, ParentSearch, ParentSearchEmpty}) =
                         <Link to={'/create'}>
                         설문 만들기
                         </Link>
+                        <button onClick={goTest}>Test</button>
                     </CreateSpan>
                 </LoginWrap>
             </HeaderMiddle>

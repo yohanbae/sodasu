@@ -48,11 +48,6 @@ const Answer = styled.div`
     padding:10px;
 `;
 
-const H5 = styled.h5`
-    margin:0; margin-bottom:5px;
-    font-family: 'RecipeKorea';
-`;
-
 const ButtonWrap = styled.div`
     display:grid;
     justify-content: flex-end;
@@ -91,11 +86,11 @@ const Multy = () => {
     }
 
     const handleSubmit = () => {
-        if(question1.value=="" || answer_one1.value=="" || answer_two1.value=="" ||
-        question2.value=="" || answer_one2.value=="" || answer_two2.value=="" ||
-        question3.value=="" || answer_one3.value=="" || answer_two3.value=="" ||
-        question4.value=="" || answer_one4.value=="" || answer_two4.value=="" ||
-        question5.value=="" || answer_one5.value=="" || answer_two5.value==""
+        if(question1.value==="" || answer_one1.value==="" || answer_two1.value==="" ||
+        question2.value==="" || answer_one2.value==="" || answer_two2.value==="" ||
+        question3.value==="" || answer_one3.value==="" || answer_two3.value==="" ||
+        question4.value==="" || answer_one4.value==="" || answer_two4.value==="" ||
+        question5.value==="" || answer_one5.value==="" || answer_two5.value===""
         ) {
             toast.error("Please fill up all 5 information", {hideProgressBar: true});
             return;
